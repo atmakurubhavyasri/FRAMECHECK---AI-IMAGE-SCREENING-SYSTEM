@@ -1,0 +1,46 @@
+{
+  "experiment": "TIGAS multi-source ViT pilot",
+  "run_date": "2026-10-25",
+  "dataset": "H1merka/TIGAS_dataset",
+  "base_model": "google/vit-base-patch16-224-in21k",
+  "held_out_generators": ["DALLE2", "Midjourney", "sd_xl"],
+  "split_counts": {
+    "train": 400,
+    "validation": 100,
+    "ood_test": 90
+  },
+  "validation": {
+    "accuracy": 0.62,
+    "macro_f1": 0.5824176,
+    "ece_before_temperature_scaling": 0.0666542,
+    "ece_after_temperature_scaling": 0.0591335,
+    "temperature": 0.8719844
+  },
+  "ood_test": {
+    "samples": 90,
+    "accuracy": 0.5111111,
+    "macro_f1": 0.5089286,
+    "roc_auc": 0.5639506,
+    "precision_real": 0.5128205,
+    "recall_real": 0.4444444,
+    "precision_fake": 0.5098039,
+    "recall_fake": 0.5777778,
+    "false_positive_rate": 0.4222222,
+    "false_negative_rate": 0.5555556,
+    "confusion_matrix_fake_real": [[26, 19], [25, 20]],
+    "ece": 0.0749164,
+    "by_held_out_generator": {
+      "DALLE2": {"samples": 30, "accuracy": 0.4333333, "macro_f1": 0.4327030},
+      "Midjourney": {"samples": 30, "accuracy": 0.5666667, "macro_f1": 0.5542857},
+      "sd_xl": {"samples": 30, "accuracy": 0.5333333, "macro_f1": 0.53125}
+    }
+  },
+  "decision": "Do not deploy this checkpoint for authenticity decisions. This small held-out generator test is near chance and does not establish performance on real-world photos.",
+  "artifacts_saved_to_drive": "My Drive/FrameCheck/framecheck-tigas-vit",
+  "limitations": [
+    "Only 400 training images, 100 validation images, and 90 held-out test images were used.",
+    "OOD test includes 30 examples per held-out generator, so estimates are noisy.",
+    "The model was not tested on the user's personal camera images.",
+    "This Hugging Face Transformers ViT checkpoint is not compatible with the existing Keras backend checkpoint."
+  ]
+}

@@ -1,0 +1,384 @@
+{
+  "model_path": "models/framecheck-ai-detector",
+  "device": "cpu",
+  "uncertain_band": [
+    0.46,
+    0.54
+  ],
+  "evaluations": {
+    "held_out_test_split": {
+      "overall": {
+        "total_samples": 600,
+        "true_real": 300,
+        "true_fake": 300,
+        "tp": 111,
+        "fp": 33,
+        "tn": 267,
+        "fn": 189,
+        "confusion_matrix": [
+          [
+            267,
+            33
+          ],
+          [
+            189,
+            111
+          ]
+        ],
+        "accuracy": 0.63,
+        "false_positive_rate": 0.11,
+        "false_negative_rate": 0.63,
+        "precision_real": 0.7708,
+        "recall_real": 0.37,
+        "f1_real": 0.5,
+        "precision_fake": 0.5855,
+        "recall_fake": 0.89,
+        "f1_fake": 0.7063,
+        "macro_f1": 0.6032,
+        "roc_auc": 0.7663,
+        "uncertain_count": 31,
+        "uncertain_rate": 0.0517,
+        "uncertain_band": [
+          0.46,
+          0.54
+        ]
+      },
+      "by_source": {
+        "CIFAKE_Test": {
+          "total_samples": 600,
+          "true_real": 300,
+          "true_fake": 300,
+          "tp": 111,
+          "fp": 33,
+          "tn": 267,
+          "fn": 189,
+          "confusion_matrix": [
+            [
+              267,
+              33
+            ],
+            [
+              189,
+              111
+            ]
+          ],
+          "accuracy": 0.63,
+          "false_positive_rate": 0.11,
+          "false_negative_rate": 0.63,
+          "precision_real": 0.7708,
+          "recall_real": 0.37,
+          "f1_real": 0.5,
+          "precision_fake": 0.5855,
+          "recall_fake": 0.89,
+          "f1_fake": 0.7063,
+          "macro_f1": 0.6032,
+          "roc_auc": 0.7663,
+          "uncertain_count": 31,
+          "uncertain_rate": 0.0517,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        }
+      },
+      "by_generator": {
+        "stable_diffusion_v1_4": {
+          "total_samples": 300,
+          "true_real": 0,
+          "true_fake": 300,
+          "tp": 0,
+          "fp": 33,
+          "tn": 267,
+          "fn": 0,
+          "confusion_matrix": [
+            [
+              267,
+              33
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "accuracy": 0.89,
+          "false_positive_rate": 0.11,
+          "false_negative_rate": 0.0,
+          "precision_real": 0.0,
+          "recall_real": 0.0,
+          "f1_real": 0.0,
+          "precision_fake": 1.0,
+          "recall_fake": 0.89,
+          "f1_fake": 0.9418,
+          "macro_f1": 0.4709,
+          "roc_auc": null,
+          "uncertain_count": 12,
+          "uncertain_rate": 0.04,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        },
+        "none (camera_photo)": {
+          "total_samples": 300,
+          "true_real": 300,
+          "true_fake": 0,
+          "tp": 111,
+          "fp": 0,
+          "tn": 0,
+          "fn": 189,
+          "confusion_matrix": [
+            [
+              0,
+              0
+            ],
+            [
+              189,
+              111
+            ]
+          ],
+          "accuracy": 0.37,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.63,
+          "precision_real": 1.0,
+          "recall_real": 0.37,
+          "f1_real": 0.5401,
+          "precision_fake": 0.0,
+          "recall_fake": 0.0,
+          "f1_fake": 0.0,
+          "macro_f1": 0.2701,
+          "roc_auc": null,
+          "uncertain_count": 19,
+          "uncertain_rate": 0.0633,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        }
+      }
+    },
+    "user_camera_test_set": {
+      "overall": {
+        "total_samples": 71,
+        "true_real": 71,
+        "true_fake": 0,
+        "tp": 44,
+        "fp": 0,
+        "tn": 0,
+        "fn": 27,
+        "confusion_matrix": [
+          [
+            0,
+            0
+          ],
+          [
+            27,
+            44
+          ]
+        ],
+        "accuracy": 0.6197,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": 0.3803,
+        "precision_real": 1.0,
+        "recall_real": 0.6197,
+        "f1_real": 0.7652,
+        "precision_fake": 0.0,
+        "recall_fake": 0.0,
+        "f1_fake": 0.0,
+        "macro_f1": 0.3826,
+        "roc_auc": null,
+        "uncertain_count": 1,
+        "uncertain_rate": 0.0141,
+        "uncertain_band": [
+          0.46,
+          0.54
+        ]
+      },
+      "by_source": {
+        "user_camera_photos": {
+          "total_samples": 71,
+          "true_real": 71,
+          "true_fake": 0,
+          "tp": 44,
+          "fp": 0,
+          "tn": 0,
+          "fn": 27,
+          "confusion_matrix": [
+            [
+              0,
+              0
+            ],
+            [
+              27,
+              44
+            ]
+          ],
+          "accuracy": 0.6197,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.3803,
+          "precision_real": 1.0,
+          "recall_real": 0.6197,
+          "f1_real": 0.7652,
+          "precision_fake": 0.0,
+          "recall_fake": 0.0,
+          "f1_fake": 0.0,
+          "macro_f1": 0.3826,
+          "roc_auc": null,
+          "uncertain_count": 1,
+          "uncertain_rate": 0.0141,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        }
+      },
+      "by_generator": {
+        "none (camera_photo)": {
+          "total_samples": 71,
+          "true_real": 71,
+          "true_fake": 0,
+          "tp": 44,
+          "fp": 0,
+          "tn": 0,
+          "fn": 27,
+          "confusion_matrix": [
+            [
+              0,
+              0
+            ],
+            [
+              27,
+              44
+            ]
+          ],
+          "accuracy": 0.6197,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.3803,
+          "precision_real": 1.0,
+          "recall_real": 0.6197,
+          "f1_real": 0.7652,
+          "precision_fake": 0.0,
+          "recall_fake": 0.0,
+          "f1_fake": 0.0,
+          "macro_f1": 0.3826,
+          "roc_auc": null,
+          "uncertain_count": 1,
+          "uncertain_rate": 0.0141,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        }
+      },
+      "by_modality": {
+        "phone_camera": {
+          "total_samples": 47,
+          "true_real": 47,
+          "true_fake": 0,
+          "tp": 30,
+          "fp": 0,
+          "tn": 0,
+          "fn": 17,
+          "confusion_matrix": [
+            [
+              0,
+              0
+            ],
+            [
+              17,
+              30
+            ]
+          ],
+          "accuracy": 0.6383,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.3617,
+          "precision_real": 1.0,
+          "recall_real": 0.6383,
+          "f1_real": 0.7792,
+          "precision_fake": 0.0,
+          "recall_fake": 0.0,
+          "f1_fake": 0.0,
+          "macro_f1": 0.3896,
+          "roc_auc": null,
+          "uncertain_count": 1,
+          "uncertain_rate": 0.0213,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        },
+        "screenshot": {
+          "total_samples": 14,
+          "true_real": 14,
+          "true_fake": 0,
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 9,
+          "confusion_matrix": [
+            [
+              0,
+              0
+            ],
+            [
+              9,
+              5
+            ]
+          ],
+          "accuracy": 0.3571,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.6429,
+          "precision_real": 1.0,
+          "recall_real": 0.3571,
+          "f1_real": 0.5263,
+          "precision_fake": 0.0,
+          "recall_fake": 0.0,
+          "f1_fake": 0.0,
+          "macro_f1": 0.2632,
+          "roc_auc": null,
+          "uncertain_count": 0,
+          "uncertain_rate": 0.0,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        },
+        "webcam": {
+          "total_samples": 10,
+          "true_real": 10,
+          "true_fake": 0,
+          "tp": 9,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "confusion_matrix": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              9
+            ]
+          ],
+          "accuracy": 0.9,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.1,
+          "precision_real": 1.0,
+          "recall_real": 0.9,
+          "f1_real": 0.9474,
+          "precision_fake": 0.0,
+          "recall_fake": 0.0,
+          "f1_fake": 0.0,
+          "macro_f1": 0.4737,
+          "roc_auc": null,
+          "uncertain_count": 0,
+          "uncertain_rate": 0.0,
+          "uncertain_band": [
+            0.46,
+            0.54
+          ]
+        }
+      }
+    }
+  }
+}

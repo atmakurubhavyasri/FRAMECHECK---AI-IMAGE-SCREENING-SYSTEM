@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#11151d" />
+    <meta name="description" content="A careful AI-generated image screening tool." />
+    <title>FrameCheck — Image origin screening</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="FrameCheck home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span>framecheck<span class="brand-dot">.</span></span>
+        </a>
+        <div class="topbar-right">
+          <span id="backend-status" class="beta-chip" data-backend-status="checking" title="Backend API status">
+            <span class="status-dot"></span>
+            <span id="backend-status-label">CONNECTING…</span>
+          </span>
+          <a class="about-link" href="#about">How it works <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> A second look at what you see</p>
+            <h1 id="hero-title">Does this image<br />feel <em>real?</em></h1>
+            <p class="hero-intro">Get an AI-powered estimate of whether an image may be synthetic. A useful signal, not a verdict.</p>
+            <div class="hero-meta">
+              <span class="meta-icon" aria-hidden="true">✳</span>
+              <span>Built for curious minds<br /><strong>Designed for careful interpretation</strong></span>
+            </div>
+            <div class="hero-scene" aria-hidden="true">
+              <div class="scene-orbit scene-orbit-one"></div>
+              <div class="scene-orbit scene-orbit-two"></div>
+              <div class="scene-core"><span class="core-shine"></span><span class="core-dot"></span></div>
+              <div class="scene-tile scene-tile-left"><span class="tile-caption">VISUAL SIGNAL <b>01</b></span><span class="tile-art tile-art-landscape"><i></i><b></b></span></div>
+              <div class="scene-tile scene-tile-right"><span class="tile-caption">PATTERN MAP <b>02</b></span><span class="tile-art tile-art-grid"><i></i><b></b><em></em></span></div>
+              <span class="scene-star scene-star-one">✳</span><span class="scene-star scene-star-two">✦</span>
+            </div>
+          </div>
+
+          <div class="analysis-card" aria-label="Image analysis form">
+            <div class="card-heading">
+              <div>
+                <p class="card-kicker">01 <span>/</span> ADD AN IMAGE</p>
+                <h2>Let’s take a closer look.</h2>
+              </div>
+              <span class="sparkle" aria-hidden="true">✳</span>
+            </div>
+
+            <input id="image-input" class="visually-hidden" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+            <div id="dropzone" class="upload-panel" aria-describedby="file-guidance">
+              <div id="upload-content" class="upload-content">
+                <span class="upload-icon" aria-hidden="true">
+                  <svg viewBox="0 0 40 40" fill="none"><path d="M20 26V9m0 0-6.5 6.5M20 9l6.5 6.5M9 24v7a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="upload-copy"><strong>Choose an image to inspect</strong><span>Pick a file from your device, or drop it here.</span><small id="file-guidance">PNG, JPG, WEBP or GIF <i>·</i> up to 5 MB</small></span>
+                <button id="choose-image" class="choose-button" type="button">Browse images <span aria-hidden="true">↗</span></button>
+              </div>
+              <div id="preview-content" class="preview-content" hidden>
+                <img id="preview-image" alt="Selected image preview" />
+                <span class="preview-details"><strong id="preview-name"></strong><span id="preview-size"></span><button id="change-image" class="replace-button" type="button">Change image</button></span>
+                <button class="remove-button" id="remove-image" type="button" aria-label="Remove selected image">×</button>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◈</span> Images are sent securely for analysis and are not saved.</p>
+              <button id="analyze-button" class="analyze-button" type="button" disabled>
+                <span id="button-label">Analyze image</span>
+                <span class="button-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+            <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section id="result-section" class="result-section" aria-live="polite" hidden>
+          <div class="result-topline"><span class="card-kicker">02 <span>/</span> MODEL ESTIMATE</span><span id="result-status" class="result-status"></span></div>
+          <div class="result-content">
+            <div class="result-copy"><p class="result-label">SCREENING RESULT</p><h2 id="result-title"></h2><p id="result-description"></p></div>
+            <div class="result-score"><div class="score-ring"><span id="result-score-value">—</span><small>%</small></div><span id="result-score-label">model estimate</span></div>
+          </div>
+          <div class="result-meter" aria-hidden="true"><span id="result-meter-fill"></span></div>
+          <p class="result-disclaimer"><span aria-hidden="true">ⓘ</span> This is a model <strong>estimate</strong>, not proof of authenticity or generation. Performance on uncompressed photos, unseen cameras, or newer image generators varies. Never treat model screening as a definitive verdict.</p>
+        </section>
+
+        <section id="about" class="how-section" aria-labelledby="how-title">
+          <div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> WHAT THIS CAN AND CAN’T DO</p><h2 id="how-title">A clue, not a conclusion.</h2></div>
+          <div class="how-grid">
+            <article class="how-card"><span class="how-number">01</span><h3>Look for patterns</h3><p>The model compares visual patterns with examples it has seen during training.</p></article>
+            <article class="how-card"><span class="how-number">02</span><h3>Read the estimate</h3><p>The result summarizes the model’s current estimate. It can be uncertain or mistaken.</p></article>
+            <article class="how-card"><span class="how-number">03</span><h3>Use your judgment</h3><p>Check the image’s source and context. This screening tool cannot verify provenance.</p></article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>framecheck<span class="brand-dot">.</span></span></a><span>Model-assisted screening for images.</span><span>© <span id="year"></span> FrameCheck</span></footer>
+    </div>
+    <div id="robo-pet" class="roaming-pet" aria-hidden="true">
+      <span class="pet-hello">Ready to scan!</span>
+      <svg class="pet-sprite" viewBox="0 0 100 82" fill="none">
+        <path d="M50 18V10" stroke="#28313a" stroke-width="4" stroke-linecap="round"/>
+        <circle class="robo-antenna" cx="50" cy="8" r="5" fill="#d5f36b" stroke="#28313a" stroke-width="2.5"/>
+        <rect x="5" y="39" width="13" height="19" rx="6" fill="#88a6a5" stroke="#28313a" stroke-width="2.5"/>
+        <rect x="82" y="39" width="13" height="19" rx="6" fill="#88a6a5" stroke="#28313a" stroke-width="2.5"/>
+        <rect x="17" y="18" width="66" height="57" rx="20" fill="#d7e5e3" stroke="#28313a" stroke-width="3"/>
+        <path d="M25 27c7-7 18-9 25-9s18 2 25 9" stroke="#fff" stroke-opacity=".75" stroke-width="3" stroke-linecap="round"/>
+        <rect x="25" y="31" width="50" height="32" rx="11" fill="#202b35" stroke="#52636b" stroke-width="2"/>
+        <circle class="robo-eye" cx="39" cy="43" r="3.5" fill="#d5f36b"/>
+        <circle class="robo-eye" cx="61" cy="43" r="3.5" fill="#d5f36b"/>
+        <path class="robo-brow-angry" d="m33 36 10 3m24-3-10 3" stroke="#ff9979" stroke-width="3" stroke-linecap="round"/>
+        <circle class="robo-cheek" cx="31" cy="52" r="2.5" fill="#f0a989"/>
+        <circle class="robo-cheek" cx="69" cy="52" r="2.5" fill="#f0a989"/>
+        <path class="robo-mouth robo-mouth-normal" d="M44 53q6 4 12 0" stroke="#dce9dd" stroke-width="2" stroke-linecap="round"/>
+        <path class="robo-mouth robo-mouth-happy" d="M41 51q9 11 18 0" stroke="#d5f36b" stroke-width="2.4" stroke-linecap="round"/>
+        <path class="robo-mouth robo-mouth-angry" d="M42 57q8-9 16 0" stroke="#ff9979" stroke-width="2.4" stroke-linecap="round"/>
+        <rect x="42" y="66" width="16" height="5" rx="2.5" fill="#9cb2ad"/>
+        <path d="M36 74v4m28-4v4" stroke="#28313a" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "method": "validation-only temperature scaling",
+  "temperature": 1.0816841125,
+  "ece_before": 0.0410439573,
+  "ece_after": 0.0364135074,
+  "uncertain_low": 0.48,
+  "uncertain_high": 0.52,
+  "validation_samples": 1000
+}

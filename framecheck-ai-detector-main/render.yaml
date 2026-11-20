@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: framecheck-image-screening
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: pip install --no-cache-dir torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir -r backend/requirements.txt
+    startCommand: python -m uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: FRAMECHECK_TORCH_THREADS
+        value: "1"

@@ -1,0 +1,62 @@
+{
+  "model_id": "models/framecheck-tigas-vit-large",
+  "temperature": 1.0816841125,
+  "calibration": {
+    "uncertain_low": 0.48,
+    "uncertain_high": 0.52,
+    "has_calibrated_file": true
+  },
+  "cifake_test_balanced_71_per_class": {
+    "fake": {
+      "expected_label": "FAKE",
+      "samples": 71,
+      "evaluated": 71,
+      "correct": 48,
+      "accuracy": 0.676056338028169,
+      "uncertain": 3,
+      "predicted_counts": {
+        "FAKE": 48,
+        "REAL": 20,
+        "UNCERTAIN": 3
+      },
+      "mean_real_probability": 0.3810387887323944,
+      "errors": {}
+    },
+    "real": {
+      "expected_label": "REAL",
+      "samples": 71,
+      "evaluated": 71,
+      "correct": 41,
+      "accuracy": 0.5774647887323944,
+      "uncertain": 2,
+      "predicted_counts": {
+        "FAKE": 28,
+        "REAL": 41,
+        "UNCERTAIN": 2
+      },
+      "mean_real_probability": 0.5736946478873239,
+      "errors": {}
+    }
+  },
+  "personal_camera_holdout_71_real": {
+    "expected_label": "REAL",
+    "samples": 71,
+    "evaluated": 71,
+    "correct": 57,
+    "accuracy": 0.8028169014084507,
+    "uncertain": 1,
+    "predicted_counts": {
+      "REAL": 57,
+      "FAKE": 13,
+      "UNCERTAIN": 1
+    },
+    "mean_real_probability": 0.7733027323943662,
+    "errors": {}
+  },
+  "limitations": [
+    "CIFAKE test images are 32x32; camera photographs are full-resolution, so results are separate slices.",
+    "The camera slice contains real images only; it measures false-positive behavior, not balanced accuracy.",
+    "This is a local exploratory check, not an independent modern-generator benchmark.",
+    "The 600-image TIGAS unseen-generator benchmark is reported separately in tigas_multisource_evaluation_large.json."
+  ]
+}

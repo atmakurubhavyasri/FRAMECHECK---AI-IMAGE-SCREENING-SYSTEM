@@ -1,0 +1,77 @@
+{
+  "experiment": "TIGAS multi-source ViT expanded run",
+  "run_date": "2026-10-25",
+  "dataset": "H1merka/TIGAS_dataset",
+  "dataset_revision": "main (resolved by Hugging Face at run time)",
+  "base_model": "google/vit-base-patch16-224-in21k",
+  "seed": 42,
+  "held_out_generators": ["DALLE2", "Midjourney", "sd_xl"],
+  "split_counts": {
+    "train": 5000,
+    "validation": 1000,
+    "ood_test": 600
+  },
+  "duplicate_counts_removed": {
+    "train": 0,
+    "validation": 0,
+    "ood_test": 0
+  },
+  "download_failures": 0,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5368999512,
+      "validation_loss": 0.3714586794,
+      "validation_accuracy": 0.839,
+      "validation_macro_f1": 0.8375953623
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2613893402,
+      "validation_loss": 0.2565359175,
+      "validation_accuracy": 0.895,
+      "validation_macro_f1": 0.8949116207
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.1089754234,
+      "validation_loss": 0.3311322629,
+      "validation_accuracy": 0.912,
+      "validation_macro_f1": 0.9119097956
+    }
+  ],
+  "checkpoint_selection": "Lowest validation loss (epoch 2).",
+  "validation_calibration": {
+    "temperature": 1.0816841125,
+    "ece_before_temperature_scaling": 0.0410439573,
+    "ece_after_temperature_scaling": 0.0364135074,
+    "uncertain_band": [0.48, 0.52]
+  },
+  "ood_test": {
+    "samples": 600,
+    "accuracy": 0.7366666667,
+    "macro_f1": 0.7352428616,
+    "roc_auc": 0.8019111111,
+    "precision_real": 0.7063953488,
+    "recall_real": 0.81,
+    "precision_fake": 0.77734375,
+    "recall_fake": 0.6633333333,
+    "confusion_matrix_fake_real": [[199, 101], [57, 243]],
+    "ai_images_misclassified_as_real_rate": 0.3366666667,
+    "real_images_misclassified_as_fake_rate": 0.19,
+    "ece": 0.1455572865,
+    "by_held_out_generator": {
+      "DALLE2": {"samples": 200, "accuracy": 0.7, "macro_f1": 0.6989160979},
+      "Midjourney": {"samples": 200, "accuracy": 0.685, "macro_f1": 0.6738370739},
+      "sd_xl": {"samples": 200, "accuracy": 0.825, "macro_f1": 0.8248905566}
+    }
+  },
+  "drive_artifacts": "My Drive/FrameCheck/framecheck-tigas-vit-large-20261025",
+  "limitations": [
+    "The benchmark covers three held-out TIGAS generator families and does not establish performance on newer or unseen generators generally.",
+    "A 33.7% AI-as-real error rate on this held-out benchmark is too high for an authoritative authenticity decision.",
+    "Expected calibration error on the held-out set is 0.146, so predicted confidence is not sufficiently trustworthy.",
+    "The user's personal camera images were not uploaded or tested.",
+    "This Transformers checkpoint is not compatible with the existing Keras backend model."
+  ]
+}

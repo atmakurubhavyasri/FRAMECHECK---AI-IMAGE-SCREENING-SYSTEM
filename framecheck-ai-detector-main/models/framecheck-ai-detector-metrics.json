@@ -1,0 +1,57 @@
+{
+  "model": {
+    "architecture": "ViTForImageClassification",
+    "base_model": "google/vit-base-patch16-224",
+    "checkpoint_epoch": 3,
+    "training_epochs": 4,
+    "image_size": 224,
+    "label_mapping": {
+      "0": "FAKE",
+      "1": "REAL"
+    }
+  },
+  "dataset": {
+    "id": "TheKernel01/Tiny-GenImage",
+    "license": "CC BY-NC-SA 4.0",
+    "class_counts": {
+      "train": {
+        "FAKE": 12600,
+        "REAL": 12600
+      },
+      "validation": {
+        "FAKE": 1400,
+        "REAL": 1400
+      },
+      "held_out_test": {
+        "FAKE": 3500,
+        "REAL": 3500
+      }
+    }
+  },
+  "validation": {
+    "accuracy": 0.9107
+  },
+  "held_out_test": {
+    "accuracy": 0.9147,
+    "roc_auc": 0.9688,
+    "classes": {
+      "FAKE": {
+        "precision": 0.9245,
+        "recall": 0.9031,
+        "f1_score": 0.9137,
+        "support": 3500
+      },
+      "REAL": {
+        "precision": 0.9053,
+        "recall": 0.9263,
+        "f1_score": 0.9157,
+        "support": 3500
+      }
+    },
+    "macro_average": {
+      "precision": 0.9149,
+      "recall": 0.9147,
+      "f1_score": 0.9147
+    }
+  }
+}

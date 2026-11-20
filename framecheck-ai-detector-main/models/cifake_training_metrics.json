@@ -1,0 +1,26 @@
+{
+  "model": "FrameCheck CIFAKE CNN",
+  "artifact": "models/cifake_detector.keras",
+  "artifact_status": "downloaded from Colab and present in the project; excluded from Git by the *.keras ignore rule",
+  "artifact_size_bytes": 1269221,
+  "artifact_sha256": "45fcb7fc8495d107f93bbda0277c8e68b0acd82aa195fc082806e06a05c6123d",
+  "dataset": "dragonintelligence/CIFAKE-image-dataset",
+  "dataset_reference": "https://huggingface.co/datasets/dragonintelligence/CIFAKE-image-dataset",
+  "seed": 42,
+  "input_shape": [32, 32, 3],
+  "parameters": 101569,
+  "label_order": {"0": "FAKE", "1": "REAL"},
+  "train_count": 90000,
+  "validation_count": 10000,
+  "test_count": 20000,
+  "test_split_used_for_training_or_model_selection": false,
+  "metrics": {
+    "accuracy": 0.93665,
+    "precision_real": 0.923398,
+    "recall_real": 0.9523,
+    "f1_real": 0.937626,
+    "roc_auc_real": 0.9849,
+    "confusion_matrix_true_fake_real_pred_fake_real": [[9210, 790], [477, 9523]]
+  },
+  "caveat": "Metrics describe the CIFAKE benchmark distribution at 32x32 resolution. They do not establish accuracy on arbitrary images or generators outside this dataset."
+}

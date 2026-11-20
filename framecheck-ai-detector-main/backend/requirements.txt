@@ -1,0 +1,12 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29,<1
+python-multipart>=0.0.9
+Pillow>=10,<13
+numpy>=1.26,<3
+# Install the pinned CPU-only Torch runtime first; it loads the packaged
+# TorchScript checkpoint without the Transformers dependency.
+# pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+# ── Evaluation notebook only ──────────────────────────────────────────────────
+# notebooks/evaluate_cifake.ipynb still needs tensorflow-cpu + scikit-learn.
+# Install those in the notebook / Colab environment separately.
+# Do not add TensorFlow here; the production API uses the packaged TorchScript model.
